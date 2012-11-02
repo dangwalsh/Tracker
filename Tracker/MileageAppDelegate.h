@@ -1,8 +1,8 @@
 //
 //  MileageAppDelegate.h
-//  Tracker
+//  MileageTracker
 //
-//  Created by Daniel Walsh on 11/2/12.
+//  Created by Daniel Walsh on 10/30/12.
 //  Copyright (c) 2012 Daniel Walsh. All rights reserved.
 //
 

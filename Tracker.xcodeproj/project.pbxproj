@@ -13,15 +13,18 @@
 		37A495871643FFC200840752 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A495861643FFC200840752 /* CoreData.framework */; };
 		37A4958D1643FFC200840752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37A4958B1643FFC200840752 /* InfoPlist.strings */; };
 		37A4958F1643FFC200840752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A4958E1643FFC200840752 /* main.m */; };
-		37A495931643FFC300840752 /* MileageAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495921643FFC300840752 /* MileageAppDelegate.m */; };
 		37A495951643FFC300840752 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A495941643FFC300840752 /* Default.png */; };
 		37A495971643FFC300840752 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A495961643FFC300840752 /* Default@2x.png */; };
 		37A495991643FFC300840752 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A495981643FFC300840752 /* Default-568h@2x.png */; };
-		37A4959C1643FFC300840752 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A4959A1643FFC300840752 /* MainStoryboard_iPhone.storyboard */; };
-		37A4959F1643FFC300840752 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A4959D1643FFC300840752 /* MainStoryboard_iPad.storyboard */; };
-		37A495A21643FFC300840752 /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37A495A01643FFC300840752 /* Tracker.xcdatamodeld */; };
-		37A495A51643FFC300840752 /* MileageMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495A41643FFC300840752 /* MileageMasterViewController.m */; };
-		37A495A81643FFC300840752 /* MileageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495A71643FFC300840752 /* MileageDetailViewController.m */; };
+		37A495B31644007E00840752 /* MileageCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495B21644007E00840752 /* MileageCLController.m */; };
+		37A495B6164400B200840752 /* MileageTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37A495B4164400B200840752 /* MileageTracker.xcdatamodeld */; };
+		37A495B91644011D00840752 /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495B81644011D00840752 /* Job.m */; };
+		37A495BC1644016300840752 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A495BA1644016300840752 /* MainStoryboard_iPad.storyboard */; };
+		37A495BD1644016300840752 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A495BB1644016300840752 /* MainStoryboard_iPhone.storyboard */; };
+		37A495C41644019A00840752 /* MileageAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495BF1644019A00840752 /* MileageAppDelegate.m */; };
+		37A495C51644019A00840752 /* MileageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495C11644019A00840752 /* MileageDetailViewController.m */; };
+		37A495C61644019A00840752 /* MileageMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A495C31644019A00840752 /* MileageMasterViewController.m */; };
+		37A495C8164401BD00840752 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A495C7164401BD00840752 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,18 +37,23 @@
 		37A4958C1643FFC200840752 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		37A4958E1643FFC200840752 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37A495901643FFC200840752 /* Tracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tracker-Prefix.pch"; sourceTree = "<group>"; };
-		37A495911643FFC300840752 /* MileageAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MileageAppDelegate.h; sourceTree = "<group>"; };
-		37A495921643FFC300840752 /* MileageAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MileageAppDelegate.m; sourceTree = "<group>"; };
 		37A495941643FFC300840752 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		37A495961643FFC300840752 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		37A495981643FFC300840752 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		37A4959B1643FFC300840752 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		37A4959E1643FFC300840752 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		37A495A11643FFC300840752 /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
-		37A495A31643FFC300840752 /* MileageMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MileageMasterViewController.h; sourceTree = "<group>"; };
-		37A495A41643FFC300840752 /* MileageMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MileageMasterViewController.m; sourceTree = "<group>"; };
-		37A495A61643FFC300840752 /* MileageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MileageDetailViewController.h; sourceTree = "<group>"; };
-		37A495A71643FFC300840752 /* MileageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MileageDetailViewController.m; sourceTree = "<group>"; };
+		37A495B11644007E00840752 /* MileageCLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MileageCLController.h; sourceTree = "<group>"; };
+		37A495B21644007E00840752 /* MileageCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MileageCLController.m; sourceTree = "<group>"; };
+		37A495B5164400B200840752 /* MileageTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MileageTracker.xcdatamodel; sourceTree = "<group>"; };
+		37A495B71644011D00840752 /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		37A495B81644011D00840752 /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
+		37A495BA1644016300840752 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		37A495BB1644016300840752 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		37A495BE1644019A00840752 /* MileageAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MileageAppDelegate.h; sourceTree = "<group>"; };
+		37A495BF1644019A00840752 /* MileageAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MileageAppDelegate.m; sourceTree = "<group>"; };
+		37A495C01644019A00840752 /* MileageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MileageDetailViewController.h; sourceTree = "<group>"; };
+		37A495C11644019A00840752 /* MileageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MileageDetailViewController.m; sourceTree = "<group>"; };
+		37A495C21644019A00840752 /* MileageMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MileageMasterViewController.h; sourceTree = "<group>"; };
+		37A495C31644019A00840752 /* MileageMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MileageMasterViewController.m; sourceTree = "<group>"; };
+		37A495C7164401BD00840752 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A495C8164401BD00840752 /* CoreLocation.framework in Frameworks */,
 				37A495811643FFC200840752 /* UIKit.framework in Frameworks */,
 				37A495831643FFC200840752 /* Foundation.framework in Frameworks */,
 				37A495851643FFC200840752 /* CoreGraphics.framework in Frameworks */,
@@ -66,7 +75,7 @@
 		37A495711643FFC200840752 = {
 			isa = PBXGroup;
 			children = (
-				37A495881643FFC200840752 /* Tracker */,
+				37A495881643FFC200840752 /* Classes */,
 				37A4957F1643FFC200840752 /* Frameworks */,
 				37A4957D1643FFC200840752 /* Products */,
 			);
@@ -83,6 +92,7 @@
 		37A4957F1643FFC200840752 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37A495C7164401BD00840752 /* CoreLocation.framework */,
 				37A495801643FFC200840752 /* UIKit.framework */,
 				37A495821643FFC200840752 /* Foundation.framework */,
 				37A495841643FFC200840752 /* CoreGraphics.framework */,
@@ -91,26 +101,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		37A495881643FFC200840752 /* Tracker */ = {
+		37A495881643FFC200840752 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				37A495911643FFC300840752 /* MileageAppDelegate.h */,
-				37A495921643FFC300840752 /* MileageAppDelegate.m */,
-				37A4959A1643FFC300840752 /* MainStoryboard_iPhone.storyboard */,
-				37A4959D1643FFC300840752 /* MainStoryboard_iPad.storyboard */,
-				37A495A31643FFC300840752 /* MileageMasterViewController.h */,
-				37A495A41643FFC300840752 /* MileageMasterViewController.m */,
-				37A495A61643FFC300840752 /* MileageDetailViewController.h */,
-				37A495A71643FFC300840752 /* MileageDetailViewController.m */,
-				37A495A01643FFC300840752 /* Tracker.xcdatamodeld */,
+				37A495BE1644019A00840752 /* MileageAppDelegate.h */,
+				37A495BF1644019A00840752 /* MileageAppDelegate.m */,
+				37A495C01644019A00840752 /* MileageDetailViewController.h */,
+				37A495C11644019A00840752 /* MileageDetailViewController.m */,
+				37A495C21644019A00840752 /* MileageMasterViewController.h */,
+				37A495C31644019A00840752 /* MileageMasterViewController.m */,
+				37A495B11644007E00840752 /* MileageCLController.h */,
+				37A495B21644007E00840752 /* MileageCLController.m */,
+				37A495B71644011D00840752 /* Job.h */,
+				37A495B81644011D00840752 /* Job.m */,
 				37A495891643FFC200840752 /* Supporting Files */,
 			);
+			name = Classes;
 			path = Tracker;
 			sourceTree = "<group>";
 		};
 		37A495891643FFC200840752 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37A495BA1644016300840752 /* MainStoryboard_iPad.storyboard */,
+				37A495BB1644016300840752 /* MainStoryboard_iPhone.storyboard */,
+				37A495B4164400B200840752 /* MileageTracker.xcdatamodeld */,
 				37A4958A1643FFC200840752 /* Tracker-Info.plist */,
 				37A4958B1643FFC200840752 /* InfoPlist.strings */,
 				37A4958E1643FFC200840752 /* main.m */,
@@ -178,8 +193,8 @@
 				37A495951643FFC300840752 /* Default.png in Resources */,
 				37A495971643FFC300840752 /* Default@2x.png in Resources */,
 				37A495991643FFC300840752 /* Default-568h@2x.png in Resources */,
-				37A4959C1643FFC300840752 /* MainStoryboard_iPhone.storyboard in Resources */,
-				37A4959F1643FFC300840752 /* MainStoryboard_iPad.storyboard in Resources */,
+				37A495BC1644016300840752 /* MainStoryboard_iPad.storyboard in Resources */,
+				37A495BD1644016300840752 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,10 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				37A4958F1643FFC200840752 /* main.m in Sources */,
-				37A495931643FFC300840752 /* MileageAppDelegate.m in Sources */,
-				37A495A21643FFC300840752 /* Tracker.xcdatamodeld in Sources */,
-				37A495A51643FFC300840752 /* MileageMasterViewController.m in Sources */,
-				37A495A81643FFC300840752 /* MileageDetailViewController.m in Sources */,
+				37A495B31644007E00840752 /* MileageCLController.m in Sources */,
+				37A495B6164400B200840752 /* MileageTracker.xcdatamodeld in Sources */,
+				37A495B91644011D00840752 /* Job.m in Sources */,
+				37A495C41644019A00840752 /* MileageAppDelegate.m in Sources */,
+				37A495C51644019A00840752 /* MileageDetailViewController.m in Sources */,
+				37A495C61644019A00840752 /* MileageMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,22 +224,6 @@
 				37A4958C1643FFC200840752 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		37A4959A1643FFC300840752 /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37A4959B1643FFC300840752 /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		37A4959D1643FFC300840752 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37A4959E1643FFC300840752 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -325,13 +326,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		37A495A01643FFC300840752 /* Tracker.xcdatamodeld */ = {
+		37A495B4164400B200840752 /* MileageTracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				37A495A11643FFC300840752 /* Tracker.xcdatamodel */,
+				37A495B5164400B200840752 /* MileageTracker.xcdatamodel */,
 			);
-			currentVersion = 37A495A11643FFC300840752 /* Tracker.xcdatamodel */;
-			path = Tracker.xcdatamodeld;
+			currentVersion = 37A495B5164400B200840752 /* MileageTracker.xcdatamodel */;
+			path = MileageTracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

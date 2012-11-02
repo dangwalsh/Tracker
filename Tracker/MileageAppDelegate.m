@@ -1,8 +1,8 @@
 //
 //  MileageAppDelegate.m
-//  Tracker
+//  MileageTracker
 //
-//  Created by Daniel Walsh on 11/2/12.
+//  Created by Daniel Walsh on 10/30/12.
 //  Copyright (c) 2012 Daniel Walsh. All rights reserved.
 //
 
@@ -102,7 +102,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Tracker" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"MileageTracker" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -115,7 +115,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Tracker.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MileageTracker.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -145,6 +145,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
+        //[[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
     }    
     
     return _persistentStoreCoordinator;

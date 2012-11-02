@@ -1,14 +1,15 @@
 //
 //  MileageMasterViewController.m
-//  Tracker
+//  MileageTracker
 //
-//  Created by Daniel Walsh on 11/2/12.
+//  Created by Daniel Walsh on 10/30/12.
 //  Copyright (c) 2012 Daniel Walsh. All rights reserved.
 //
 
 #import "MileageMasterViewController.h"
 
 #import "MileageDetailViewController.h"
+#import "Job.h"
 
 @interface MileageMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -31,9 +32,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject)];
+    //self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (MileageDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    formatter = [[NSNumberFormatter alloc]init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,15 +46,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSError *error = nil;
+    if (![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+- (void)insertNewObject
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    Job *job = [NSEntityDescription insertNewObjectForEntityForName:[entity name]inManagedObjectContext:context];
+
+    job.number =  @"New Number";
+    job.dateCreated = [NSDate date];
     
     // Save the context.
     NSError *error = nil;
@@ -72,6 +87,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    
+    if ([sectionInfo numberOfObjects] == 0) {
+        [self insertNewObject];
+        [self.tableView reloadData];
+    }
+    
     return [sectionInfo numberOfObjects];
 }
 
@@ -101,7 +122,39 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
-    }   
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert && changing == nil) {
+		// Call the insert method to create a new object
+		// and add a new row to the table view.
+        [self insertNewObject];
+		[self.tableView reloadData];
+        
+		//Edit the text of the new cell.
+        int num = [self tableView:tableView numberOfRowsInSection:0];
+		changing = [NSIndexPath indexPathForRow: num-1 inSection: 0];
+        
+		UITableViewCell *cell = [tableView cellForRowAtIndexPath: changing];
+		UIFont *font = cell.textLabel.font;
+		//CGFloat dy = (cell.contentView.bounds.size.height - font.lineHeight) / 2;
+        
+		CGRect frame = CGRectMake(
+                                  cell.textLabel.frame.origin.x,
+                                  cell.textLabel.frame.origin.y,
+                                  cell.contentView.bounds.size.width,
+                                  cell.contentView.bounds.size.height
+                                  );
+        
+		UITextField *textField = [[UITextField alloc] initWithFrame: frame];
+		textField.delegate = self;
+		textField.backgroundColor = cell.textLabel.backgroundColor;
+		textField.textColor = cell.textLabel.textColor;
+		textField.text = cell.textLabel.text;
+		textField.font = font;
+		cell.textLabel.text = @" ";
+		[cell.contentView addSubview: textField];
+		[textField becomeFirstResponder];
+		[tableView deselectRowAtIndexPath: indexPath animated: YES];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,11 +163,21 @@
     return NO;
 }
 
+- (UITableViewCellEditingStyle) tableView: (UITableView *) tableView
+            editingStyleForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    int num = [self tableView:tableView numberOfRowsInSection:0];
+	if (indexPath.row == num - 1) {
+		return UITableViewCellEditingStyleInsert;
+	}
+	return UITableViewCellEditingStyleDelete;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        self.detailViewController.detailItem = object;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        Job *job = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        self.detailViewController.detailItem = job;
     }
 }
 
@@ -122,8 +185,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
+        Job *job = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setDetailItem:job];
     }
 }
 
@@ -137,14 +200,14 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Job" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -216,20 +279,34 @@
     [self.tableView endUpdates];
 }
 
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    Job *job = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = job.number;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Total: %3@", [formatter stringFromNumber:job.totalMileage]];
 }
 
+#pragma mark - protocol UITextFieldDelegate
+
+//Called when return key is pressed.
+//Decide if the app should accept this input and hide the keyboard.
+
+- (BOOL) textFieldShouldReturn: (UITextField *) textField {
+	[textField resignFirstResponder];	//Hide keyboard.
+	return YES;
+}
+
+//Called when keyboard is hidden.
+//Process the text that was input.
+
+- (void) textFieldDidEndEditing: (UITextField *) textField {
+	//Get the cell that was being edited.
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:changing];
+    Job *job = [self.fetchedResultsController objectAtIndexPath:changing];
+    job.number = textField.text;
+	cell.textLabel.text = job.number;
+	[textField removeFromSuperview];
+    [self.tableView reloadData];
+	changing = nil;
+}
 @end
